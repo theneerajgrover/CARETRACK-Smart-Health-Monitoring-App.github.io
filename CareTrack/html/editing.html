@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Confirm Details</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="manifest" href="../json files/manifest.json">
+<meta name="theme-color" content="#2c3e50">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log("PWA Service Worker Registered"));
+  }
+</script>
+</head>
+
+<body>
+<header>
+    <nav class="all_head">
+        <div class="header_content1">
+            <img class="logo" src="../images/logo.png" alt="CareTrack Logo">
+            <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+        <form></form>
+            <div class="header_content2">
+                <a href="index.html" class="header_text2">Home</a>
+                <a href="about.html" class="header_text2">About</a>
+                <a href="contact.html" class="header_text2">Contact</a>
+                <a href="faq.html" class="header_text2">FAQ</a>
+            </div>
+        </form>
+    </nav>
+</header>
+<div class="container">
+
+<h2>Confirm Your Details</h2>
+
+<div class="report-box">
+
+<h3>Profile Information</h3>
+<p id="profileInfo"></p>
+
+<h3>Selected Symptoms</h3>
+<p id="symptomInfo"></p>
+
+</div>
+
+<br>
+
+<label>
+<input type="checkbox" id="agreeBox" onchange="toggleButton()">
+I agree to the 
+<a href="terms.html" target="_blank">Terms and Conditions</a>
+</label>
+
+<br><br>
+
+<button id="continueBtn" class="primary-btn" style="display:none;" onclick="goToReport()">
+Continue
+</button>
+
+</div>
+
+<script>
+
+let profile = JSON.parse(localStorage.getItem("caretrackProfile")) || {};
+let symptoms = JSON.parse(localStorage.getItem("caretrackSymptoms")) || [];
+
+document.getElementById("profileInfo").innerHTML = `
+Name: ${profile.name || ""} <br>
+Age: ${profile.age || ""} <br>
+Gender: ${profile.gender || ""} <br>
+Blood Group: ${profile.blood || ""} <br>
+Phone: ${profile.phone || ""} <br>
+Email: ${profile.email || ""}
+`;
+
+document.getElementById("symptomInfo").innerHTML =
+symptoms.length > 0 ? symptoms.join(", ") : "No symptoms selected";
+
+function toggleButton(){
+
+let check = document.getElementById("agreeBox");
+
+if(check.checked){
+document.getElementById("continueBtn").style.display="block";
+}else{
+document.getElementById("continueBtn").style.display="none";
+}
+
+}
+
+function goToReport(){
+window.location.href="report.html";
+}
+
+</script>
+
+</body>
+</html>

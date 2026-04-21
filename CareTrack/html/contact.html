@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact CareTrack</title>
+    <link rel="stylesheet" href="../css/contact.css" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="manifest" href="../json files/manifest.json" />
+    <script>
+      (function () {
+        emailjs.init("7U9BIYZx4ljI_XaKN");
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" />
+          <a href="../html/about.html" class="header_text">CareTrack</a>
+        </div>
+        <div class="header_content2">
+          <a href="../html/index.html" class="header_text2">Home</a>
+          <a href="../html/about.html" class="header_text2">About</a>
+          <a href="../html/contact.html" class="header_text2">Contact</a>
+          <a href="../html/faq.html" class="header_text2">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="contact_header">
+      <h1>Contact Us</h1>
+      <p>Have questions about CareTrack? We'd love to hear from you.</p>
+    </div>
+
+    <div class="container">
+      <div class="contact_card">
+        <form id="contactForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <textarea id="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <p id="statusMsg"></p>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const status = document.getElementById("statusMsg");
+          status.style.color = "black";
+          status.innerText = "Sending...";
+
+          const params = {
+            user_name: document.getElementById("name").value,
+            user_email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+          };
+
+          emailjs
+            .send("service_r3hiqvw", "template_oqrg8ql", params)
+            .then(function () {
+              status.style.color = "green";
+              status.innerText = "✅ Message sent successfully!";
+              document.getElementById("contactForm").reset();
+            })
+            .catch(function (error) {
+              status.style.color = "red";
+              status.innerText = "❌ Failed to send. Check console.";
+              console.error("FAILED...", error);
+            });
+        });
+    </script>
+  </body>
+</html>

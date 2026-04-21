@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page CareTrack</title>
+    <link rel="stylesheet" href="../css/profile.css" />
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="main">
+      <div class="container">
+        <div class="left">
+          <h1>Your Health Profile</h1>
+          <p>
+            Enter your basic health information to help CareTrack analyze
+            symptoms more accurately and provide better health insights.
+          </p>
+        </div>
+        <div class="right">
+          <h2>Profile Information</h2>
+          <div class="note">All fields are required</div>
+          <form onsubmit="saveProfile(event)">
+            <div class="form_grid">
+              <input type="text" id="name" placeholder="Full Name" required />
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                required
+              />
+              <input
+                type="number"
+                id="phone"
+                placeholder="Phone Number"
+                required
+              />
+              <input type="text" id="address" placeholder="Address" required />
+              <input type="number" id="age" placeholder="Age" required />
+              <input
+                type="text"
+                id="blood"
+                placeholder="Blood Group"
+                required
+              />
+              <input
+                type="number"
+                id="height"
+                placeholder="Height (cm)"
+                required
+              />
+              <input
+                type="number"
+                id="weight"
+                placeholder="Weight (kg)"
+                required
+              />
+              <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button type="submit">Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function saveProfile(event) {
+        event.preventDefault();
+        let profile = {
+          name: document.getElementById("name").value,
+          age: document.getElementById("age").value,
+          gender: document.getElementById("gender").value,
+          blood: document.getElementById("blood").value,
+          phone: document.getElementById("phone").value,
+          email: document.getElementById("email").value,
+          height: document.getElementById("height").value,
+          weight: document.getElementById("weight").value,
+          address: document.getElementById("address").value,
+        };
+
+        localStorage.setItem("caretrackProfile", JSON.stringify(profile));
+        alert("Profile Saved Successfully!");
+        window.location.href = "symptoms.html";
+      }
+    </script>
+  </body>
+</html>
