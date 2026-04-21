@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CareTrack | Home</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+          <a href="signin.html" id="signinBtn" class="header_text2">Sign In</a>
+          <a href="signup.html" id="signupBtn" class="header_text2">Sign Up</a>
+          <a
+            href="#"
+            id="logoutBtn"
+            class="header_text2"
+            onclick="logout()"
+            style="display: none"
+            >Sign Out</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero_text">
+        <h1>Health Symptom Analyzer</h1>
+
+        <p>
+          CareTrack helps you quickly analyze your symptoms and generate a basic
+          health report. Select symptoms, analyze your condition, and get
+          insights in seconds.
+        </p>
+
+        <button class="start_btn" onclick="startAnalysis()">
+          Start Health Analysis
+        </button>
+      </div>
+
+      <div class="hero_img">
+        <img src="../images/doctor.png" alt="Doctor Illustration" />
+      </div>
+    </section>
+
+    <script>
+      function startAnalysis() {
+        localStorage.removeItem("caretrackSymptoms");
+
+        window.location.href = "profile.html";
+      }
+    </script>
+    <script src="../java script/auth.js"></script>
+  </body>
+</html>
