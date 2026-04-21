@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CareTrack - Symptoms</title>
+    <link rel="stylesheet" href="../css/symptoms.css" />
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="main">
+      <h2>Select Symptom Category</h2>
+      <p class="main_p">Choose the category that best matches your symptoms</p>
+
+      <div class="grid">
+        <div class="card" onclick="openPage('general.html')">
+          <div class="icon">🩺</div>
+          <h3>General Health</h3>
+          <p>Fever, fatigue, weakness</p>
+        </div>
+
+        <div class="card" onclick="openPage('respiratory.html')">
+          <div class="icon">🫁</div>
+          <h3>Respiratory</h3>
+          <p>Cough, breathing issues</p>
+        </div>
+
+        <div class="card" onclick="openPage('digestive.html')">
+          <div class="icon">🍽</div>
+          <h3>Digestive</h3>
+          <p>Stomach pain, nausea</p>
+        </div>
+
+        <div class="card" onclick="openPage('muscular.html')">
+          <div class="icon">💪</div>
+          <h3>Muscular</h3>
+          <p>Muscle pain, joint issues</p>
+        </div>
+
+        <div class="card" onclick="openPage('heart.html')">
+          <div class="icon">❤️</div>
+          <h3>Heart</h3>
+          <p>Chest pain, heart symptoms</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      if (!localStorage.getItem("caretrackUser")) {
+        window.location.href = "signin.html";
+      }
+      function openPage(page) {
+        window.location.href = page;
+      }
+    </script>
+  </body>
+</html>

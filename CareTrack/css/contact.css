@@ -1,0 +1,123 @@
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f4f7f8;
+}
+
+.all_head {
+display:flex;
+align-items:center;
+justify-content:space-evenly;
+background-color:#ffffff;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+}
+
+.logo{
+height:100px;
+}
+
+.header_content1{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.header_text{
+font-size:50px;
+text-decoration:none;
+color:black;
+}
+
+.header_content2{
+display:flex;
+align-items:center;
+gap:20px;
+font-size:25px;
+}
+
+.header_text2{
+width:100px;
+text-decoration:none;
+font-size:25px;
+color:black;
+}
+
+.header_text2:hover{
+color:cadetblue;
+font-size:30px;
+}
+
+.contact_header {
+  margin-top: 50px;
+  background: #6b9fa1;
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.contact_header h1 {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.contact_card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+button {
+  background: #2e7de1;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1c5fb5;
+}
+
+.info {
+  margin-top: 30px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: gray;
+}

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Health Report</title>
+    <link rel="stylesheet" href="../css/report.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Medical Analysis Report</h1>
+
+      <div id="profileBox"></div>
+
+      <h2>Selected Symptoms</h2>
+      <div id="symptomBox"></div>
+
+      <h2>Possible Conditions</h2>
+      <div id="results"></div>
+
+      <br />
+      <div>
+        <button class="report_button" onclick="downloadPDF()">
+          Download Report PDF
+        </button>
+      </div>
+    </div>
+
+    <script src="../java script/diseases.js"></script>
+    <script src="../java script/report.js"></script>
+  </body>
+</html>

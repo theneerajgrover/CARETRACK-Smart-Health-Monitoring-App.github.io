@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CareTrack | General Symptoms</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="manifest" href="../json files/manifest.json">
+<meta name="theme-color" content="#2c3e50">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log("PWA Service Worker Registered"));
+  }
+</script>
+</head>
+
+<body>
+
+<header>
+        <nav class="all_head">
+            <div class="header_content1">
+                <img class="logo" src="../images/logo.png" alt="CareTrack Logo">
+                <a href="about.html" class="header_text">CareTrack</a>
+            </div>
+            <form></form>
+                <div class="header_content2">
+                    <a href="index.html" class="header_text2">Home</a>
+                    <a href="about.html" class="header_text2">About</a>
+                    <a href="contact.html" class="header_text2">Contact</a>
+                    <a href="faq.html" class="header_text2">FAQ</a>
+                </div>
+            </form>
+        </nav>
+    </header>
+
+<!-- MAIN CARD -->
+
+<div class="container">
+
+<h2>🩺 General Symptoms</h2>
+<p>Select the symptoms you are experiencing</p>
+
+<div class="symptom-list">
+
+<label class="symptom-card">
+<input type="checkbox" value="Fever">
+<span>Fever</span>
+</label>
+
+<label class="symptom-card">
+<input type="checkbox" value="Fatigue">
+<span>Fatigue</span>
+</label>
+
+<label class="symptom-card">
+<input type="checkbox" value="Headache">
+<span>Headache</span>
+</label>
+
+<label class="symptom-card">
+<input type="checkbox" value="Body Pain">
+<span>Body Pain</span>
+</label>
+
+</div>
+
+<button class="primary-btn" onclick="saveSymptoms('editing.html')">
+Save & Continue
+</button>
+
+<button class="secondary-btn" onclick="saveSymptoms('symptoms.html')">
+Select More
+</button>
+
+</div>
+
+
+<script>
+
+window.onload=function(){
+
+let stored=JSON.parse(localStorage.getItem("caretrackSymptoms"))||[];
+
+let boxes=document.querySelectorAll('input[type="checkbox"]');
+
+boxes.forEach(box=>{
+if(stored.includes(box.value)){
+box.checked=true;
+}
+});
+
+}
+
+function saveSymptoms(nextPage){
+
+let selected=[];
+let boxes=document.querySelectorAll('input[type="checkbox"]:checked');
+
+boxes.forEach(b=>selected.push(b.value));
+
+let stored=JSON.parse(localStorage.getItem("caretrackSymptoms"))||[];
+
+let updated=[...new Set([...stored,...selected])];
+
+localStorage.setItem("caretrackSymptoms",JSON.stringify(updated));
+
+window.location.href=nextPage;
+
+}
+
+</script>
+
+</body>
+</html>

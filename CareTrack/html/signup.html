@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CareTrack - Sign Up</title>
+    <link rel="stylesheet" href="../css/signup.css" />
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+          <a href="signin.html" id="signinBtn" class="header_text2">Sign In</a>
+          <a href="signup.html" id="signupBtn" class="header_text2">Sign Up</a>
+          <a
+            href="#"
+            id="logoutBtn"
+            class="header_text2"
+            onclick="logout()"
+            style="display: none"
+            >Sign Out</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2>Create CareTrack Account</h2>
+
+      <input type="text" id="name" placeholder="Full Name" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <button class="signup-btn" onclick="signup()">Sign Up</button>
+
+      <button class="guest-btn" onclick="continueGuest()">
+        Continue as Guest
+      </button>
+
+      <button class="home-btn" onclick="goHome()">Back to Home</button>
+
+      <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </div>
+
+    <script>
+      function signup() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        if (name == "" || email == "" || password == "") {
+          alert("Please fill all fields");
+          return;
+        }
+
+        let users = JSON.parse(localStorage.getItem("caretrackUsers")) || [];
+
+        let userExists = users.find((user) => user.email === email);
+
+        if (userExists) {
+          alert("User already exists");
+          return;
+        }
+
+        users.push({
+          name: name,
+          email: email,
+          password: password,
+        });
+
+        localStorage.setItem("caretrackUsers", JSON.stringify(users));
+
+        alert("Account created successfully!");
+
+        window.location.href = "signin.html";
+      }
+
+      function continueGuest() {
+        localStorage.setItem(
+          "caretrackUser",
+          JSON.stringify({
+            name: "Guest User",
+            role: "guest",
+          }),
+        );
+
+        window.location.href = "index.html";
+      }
+
+      function goHome() {
+        window.location.href = "index.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ CareTrack</title>
+    <link rel="stylesheet" href="../css/faq.css" />
+    <link rel="manifest" href="../json files/manifest.json" />
+    <meta name="theme-color" content="#2c3e50" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then(() => console.log("PWA Service Worker Registered"));
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav class="all_head">
+        <div class="header_content1">
+          <img class="logo" src="../images/logo.png" alt="CareTrack Logo" />
+          <a href="about.html" class="header_text">CareTrack</a>
+        </div>
+
+        <div class="header_content2">
+          <a href="index.html" class="header_text2">Home</a>
+          <a href="about.html" class="header_text2">About</a>
+          <a href="contact.html" class="header_text2">Contact</a>
+          <a href="faq.html" class="header_text2">FAQ</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="faq_header">
+      <h1>Frequently Asked Questions</h1>
+      <p>Common questions about CareTrack</p>
+    </div>
+
+    <div class="container">
+      <div class="faq">
+        <div class="question">
+          Is CareTrack a medical diagnosis tool?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="answer">
+          CareTrack provides health insights based on symptoms but it does not
+          replace professional medical diagnosis.
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          How does CareTrack analyze symptoms?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="answer">
+          The system compares the symptoms entered by the user with a medical
+          knowledge database to identify possible related conditions.
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          Is my health data stored?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="answer">
+          CareTrack prioritizes user privacy and does not permanently store
+          personal health data.
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          When should I consult a doctor?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="answer">
+          If symptoms are severe, persistent, or worsening, you should
+          immediately consult a qualified medical professional.
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          How accurate are the results?
+          <span class="arrow">▼</span>
+        </div>
+        <div class="answer">
+          CareTrack provides possible health insights based on symptom patterns,
+          but results should always be verified with a doctor.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">CareTrack | Symptom Checker</div>
+
+    <script>
+      var faqs = document.querySelectorAll(".faq");
+      faqs.forEach(function (faq) {
+        faq.addEventListener("click", function () {
+          if (this.classList.contains("active")) {
+            this.classList.remove("active");
+          } else {
+            faqs.forEach(function (item) {
+              item.classList.remove("active");
+            });
+            this.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
