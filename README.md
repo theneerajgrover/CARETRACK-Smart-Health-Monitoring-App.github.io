@@ -81,4 +81,3 @@ Team Member: Neeraj Grover
 Purpose
 
 CareTrack aims to promote preventive healthcare and faster emergency response using simple and accessible technology.
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6b345a20-5775-4d62-a5f3-684d068af17c" />
