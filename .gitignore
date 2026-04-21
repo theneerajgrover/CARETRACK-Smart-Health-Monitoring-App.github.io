@@ -1,0 +1,12 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Node (agar future me use kare)
+node_modules/
+
+# Env files
+.env
+
+# Logs
+*.log  
