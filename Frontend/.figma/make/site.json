@@ -1,0 +1,10 @@
+{
+  "description": "Provides personalized AI-driven healthcare insights and support to enhance patient care and streamline medical decision-making for users.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
